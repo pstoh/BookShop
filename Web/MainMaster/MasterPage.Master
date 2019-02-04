@@ -1,0 +1,57 @@
+﻿   <%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="BookShop.Web.MainMaster.MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>�������»������������� - �������80���𣬹�����99Ԫ���˷ѣ�</title>
+<meta content="�������»������������꣬�������ṩרҵ���������.���Ϲ���ѡ���»�������������(�������),��������б���.���������绰:010-65132842.010-65252592" name="description"/>
+<meta content="��������� �»���� ������� ���Ϲ��� ����ͼ�����" name="keywords">
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <script type="text/javascript" src="/Scripts/jQuery-1.8.2.js" ></script>
+    <link href="/css/index.css" rel="stylesheet" type="text/css">
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <center>
+        <div class="top">
+            <div class="m_c" style="width: 736px; height: 27px">
+	<span class="l">
+      <a href="http://www.beifabook.com" target="_blank">����ͼ��������վ</a> |&nbsp;
+      <a href="http://www.bjbb.com" target="_blank">����ͼ�����</a>&nbsp; |
+      <a href="../default.aspx" target="_blank"><font color="#00A0E9">���������</font></a>&nbsp;|
+      <a href="http://www.zgcbb.com/" target="_blank">�йش�ͼ�����</a>&nbsp; |
+      <a href="http://www.yycbook.com/" target="_blank">���˴�ͼ�����</a>&nbsp; |
+      <a href="http://www.hs-book.com" target="_blank">�������</a>&nbsp; |
+	  <a href="/OrderInfo.aspx" >�ҵĶ���</a></span></div>
+        </div>
+         <div style="WIDTH: 750px; text-align: left;"><img src="../images/������վ1.jpg" width="780" height="93" /><br />
+&nbsp;&nbsp;&nbsp;&nbsp;         </div>
+
+        <div id="main_boc">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+
+        <div id="footer">
+  <table border="0" width="100%" class="categories1">
+    <tr>
+      <td align="center">��
+        <ul>
+            <li><a href='#'>�����������������</li>
+          <li><a href="#">���Ӫҵʱ�䣺9��30-21��00 </a> </li>
+          <li> <a href="#"; target=_blank; ><img src="/images/logo123x40.jpg" width="123" height="40" border="0"></a> <a href="#"; target=_blank; ><img border="0" src="/Images/kaixin.jpg"></a> </li>
+          <li>&nbsp;<span lang="zh-cn"><a title="��ICP��08001692��" href="http://www.miibeian.gov.cn">��ICP��08987373��</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </li>
+        </ul></td>
+    </tr>
+  </table>
+</div>
+    </center>
+    </form>
+</body>
+</html>
