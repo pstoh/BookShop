@@ -2,67 +2,67 @@
 namespace BookShop.Model
 {
 	/// <summary>
-	/// Orders:实体类(属性说明自动提取数据库字段的描述信息)
+	/// orders:实体类(属性说明自动提取数据库字段的描述信息)
 	/// </summary>
 	[Serializable]
-	public partial class Orders
+	public partial class orders
 	{
-		public Orders()
+		public orders()
 		{}
 		#region Model
-		private string _orderid;
-		private DateTime _orderdate;
-		private int _userid;
-		private decimal _totalprice;
-		private string _postaddress;
-		private int _state=0;
+		private string _oid;
+		private DateTime? _ordertime;
+		private decimal? _total;
+		private int? _state;
+		private int? _uid;
+		private string _address;
 		/// <summary>
 		/// 
 		/// </summary>
-		public string OrderId
+		public string oid
 		{
-			set{ _orderid=value;}
-			get{return _orderid;}
+			set{ _oid=value;}
+			get{return _oid;}
 		}
 		/// <summary>
 		/// 
 		/// </summary>
-		public DateTime OrderDate
+		public DateTime? ordertime
 		{
-			set{ _orderdate=value;}
-			get{return _orderdate;}
+			set{ _ordertime=value;}
+			get{return _ordertime;}
 		}
 		/// <summary>
 		/// 
 		/// </summary>
-		public int UserId
+		public decimal? total
 		{
-			set{ _userid=value;}
-			get{return _userid;}
+			set{ _total=value;}
+			get{return _total;}
 		}
 		/// <summary>
 		/// 
 		/// </summary>
-		public decimal TotalPrice
-		{
-			set{ _totalprice=value;}
-			get{return _totalprice;}
-		}
-		/// <summary>
-		/// 
-		/// </summary>
-		public string PostAddress
-		{
-			set{ _postaddress=value;}
-			get{return _postaddress;}
-		}
-		/// <summary>
-		/// 
-		/// </summary>
-		public int state
+		public int? state
 		{
 			set{ _state=value;}
 			get{return _state;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public int? uid
+		{
+			set{ _uid=value;}
+			get{return _uid;}
+		}
+		/// <summary>
+		/// 
+		/// </summary>
+		public string address
+		{
+			set{ _address=value;}
+			get{return _address;}
 		}
 		#endregion Model
 

@@ -1,60 +1,60 @@
 ﻿using System;
 using System.Data;
 using System.Text;
-using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 using Maticsoft.DBUtility;//Please add references
 namespace BookShop.DAL
 {
 	/// <summary>
-	/// 数据访问类:Orders
+	/// 数据访问类:orders
 	/// </summary>
-	public partial class Orders
+	public partial class orders
 	{
-		public Orders()
+		public orders()
 		{}
 		#region  BasicMethod
 
 		/// <summary>
 		/// 是否存在该记录
 		/// </summary>
-		public bool Exists(string OrderId)
+		public bool Exists(string oid)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select count(1) from Orders");
-			strSql.Append(" where OrderId=@OrderId ");
-			SqlParameter[] parameters = {
-					new SqlParameter("@OrderId", SqlDbType.NVarChar,50)			};
-			parameters[0].Value = OrderId;
+			strSql.Append("select count(1) from orders");
+			strSql.Append(" where oid=@oid ");
+			MySqlParameter[] parameters = {
+					new MySqlParameter("@oid", MySqlDbType.VarChar,32)			};
+			parameters[0].Value = oid;
 
-			return DbHelperSQL.Exists(strSql.ToString(),parameters);
+			return DbHelperMySQL.Exists(strSql.ToString(),parameters);
 		}
 
 
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(BookShop.Model.Orders model)
+		public bool Add(BookShop.Model.orders model)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("insert into Orders(");
-			strSql.Append("OrderId,OrderDate,UserId,TotalPrice,PostAddress,state)");
+			strSql.Append("insert into orders(");
+			strSql.Append("oid,ordertime,total,state,uid,address)");
 			strSql.Append(" values (");
-			strSql.Append("@OrderId,@OrderDate,@UserId,@TotalPrice,@PostAddress,@state)");
-			SqlParameter[] parameters = {
-					new SqlParameter("@OrderId", SqlDbType.NVarChar,50),
-					new SqlParameter("@OrderDate", SqlDbType.DateTime),
-					new SqlParameter("@UserId", SqlDbType.Int,4),
-					new SqlParameter("@TotalPrice", SqlDbType.Decimal,9),
-					new SqlParameter("@PostAddress", SqlDbType.NVarChar,255),
-					new SqlParameter("@state", SqlDbType.Int,4)};
-			parameters[0].Value = model.OrderId;
-			parameters[1].Value = model.OrderDate;
-			parameters[2].Value = model.UserId;
-			parameters[3].Value = model.TotalPrice;
-			parameters[4].Value = model.PostAddress;
-			parameters[5].Value = model.state;
+			strSql.Append("@oid,@ordertime,@total,@state,@uid,@address)");
+			MySqlParameter[] parameters = {
+					new MySqlParameter("@oid", MySqlDbType.VarChar,32),
+					new MySqlParameter("@ordertime", MySqlDbType.DateTime),
+					new MySqlParameter("@total", MySqlDbType.Decimal,10),
+					new MySqlParameter("@state", MySqlDbType.Int32,1),
+					new MySqlParameter("@uid", MySqlDbType.Int32,11),
+					new MySqlParameter("@address", MySqlDbType.VarChar,200)};
+			parameters[0].Value = model.oid;
+			parameters[1].Value = model.ordertime;
+			parameters[2].Value = model.total;
+			parameters[3].Value = model.state;
+			parameters[4].Value = model.uid;
+			parameters[5].Value = model.address;
 
-			int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
+			int rows=DbHelperMySQL.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
 			{
 				return true;
@@ -67,31 +67,32 @@ namespace BookShop.DAL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(BookShop.Model.Orders model)
+		public bool Update(BookShop.Model.orders model)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("update Orders set ");
-			strSql.Append("OrderDate=@OrderDate,");
-			strSql.Append("UserId=@UserId,");
-			strSql.Append("TotalPrice=@TotalPrice,");
-			strSql.Append("PostAddress=@PostAddress,");
-			strSql.Append("state=@state");
-			strSql.Append(" where OrderId=@OrderId ");
-			SqlParameter[] parameters = {
-					new SqlParameter("@OrderDate", SqlDbType.DateTime),
-					new SqlParameter("@UserId", SqlDbType.Int,4),
-					new SqlParameter("@TotalPrice", SqlDbType.Decimal,9),
-					new SqlParameter("@PostAddress", SqlDbType.NVarChar,255),
-					new SqlParameter("@state", SqlDbType.Int,4),
-					new SqlParameter("@OrderId", SqlDbType.NVarChar,50)};
-			parameters[0].Value = model.OrderDate;
-			parameters[1].Value = model.UserId;
-			parameters[2].Value = model.TotalPrice;
-			parameters[3].Value = model.PostAddress;
-			parameters[4].Value = model.state;
-			parameters[5].Value = model.OrderId;
+			strSql.Append("update orders set ");
+			strSql.Append("ordertime=@ordertime,");
+			strSql.Append("total=@total,");
+			strSql.Append("state=@state,");
+			strSql.Append("uid=@uid,");
+			strSql.Append("address=@address");
+			strSql.Append(" where oid=@oid ");
+			MySqlParameter[] parameters = {
+					new MySqlParameter("@ordertime", MySqlDbType.DateTime),
+					new MySqlParameter("@total", MySqlDbType.Decimal,10),
+					new MySqlParameter("@state", MySqlDbType.Int32
+						,1),
+					new MySqlParameter("@uid", MySqlDbType.Int32,11),
+					new MySqlParameter("@address", MySqlDbType.VarChar,200),
+					new MySqlParameter("@oid", MySqlDbType.VarChar,32)};
+			parameters[0].Value = model.ordertime;
+			parameters[1].Value = model.total;
+			parameters[2].Value = model.state;
+			parameters[3].Value = model.uid;
+			parameters[4].Value = model.address;
+			parameters[5].Value = model.oid;
 
-			int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
+			int rows=DbHelperMySQL.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
 			{
 				return true;
@@ -105,17 +106,17 @@ namespace BookShop.DAL
 		/// <summary>
 		/// 删除一条数据
 		/// </summary>
-		public bool Delete(string OrderId)
+		public bool Delete(string oid)
 		{
 			
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("delete from Orders ");
-			strSql.Append(" where OrderId=@OrderId ");
-			SqlParameter[] parameters = {
-					new SqlParameter("@OrderId", SqlDbType.NVarChar,50)			};
-			parameters[0].Value = OrderId;
+			strSql.Append("delete from orders ");
+			strSql.Append(" where oid=@oid ");
+			MySqlParameter[] parameters = {
+					new MySqlParameter("@oid", MySqlDbType.VarChar,32)			};
+			parameters[0].Value = oid;
 
-			int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
+			int rows=DbHelperMySQL.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
 			{
 				return true;
@@ -128,12 +129,12 @@ namespace BookShop.DAL
 		/// <summary>
 		/// 批量删除数据
 		/// </summary>
-		public bool DeleteList(string OrderIdlist )
+		public bool DeleteList(string oidlist )
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("delete from Orders ");
-			strSql.Append(" where OrderId in ("+OrderIdlist + ")  ");
-			int rows=DbHelperSQL.ExecuteSql(strSql.ToString());
+			strSql.Append("delete from orders ");
+			strSql.Append(" where oid in ("+oidlist + ")  ");
+			int rows=DbHelperMySQL.ExecuteSql(strSql.ToString());
 			if (rows > 0)
 			{
 				return true;
@@ -148,18 +149,18 @@ namespace BookShop.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public BookShop.Model.Orders GetModel(string OrderId)
+		public BookShop.Model.orders GetModel(string oid)
 		{
 			
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select  top 1 OrderId,OrderDate,UserId,TotalPrice,PostAddress,state from Orders ");
-			strSql.Append(" where OrderId=@OrderId ");
-			SqlParameter[] parameters = {
-					new SqlParameter("@OrderId", SqlDbType.NVarChar,50)			};
-			parameters[0].Value = OrderId;
+			strSql.Append("select oid,ordertime,total,state,uid,address from orders ");
+			strSql.Append(" where oid=@oid ");
+			MySqlParameter[] parameters = {
+					new MySqlParameter("@oid", MySqlDbType.VarChar,32)			};
+			parameters[0].Value = oid;
 
-			BookShop.Model.Orders model=new BookShop.Model.Orders();
-			DataSet ds=DbHelperSQL.Query(strSql.ToString(),parameters);
+			BookShop.Model.orders model=new BookShop.Model.orders();
+			DataSet ds=DbHelperMySQL.Query(strSql.ToString(),parameters);
 			if(ds.Tables[0].Rows.Count>0)
 			{
 				return DataRowToModel(ds.Tables[0].Rows[0]);
@@ -174,34 +175,34 @@ namespace BookShop.DAL
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public BookShop.Model.Orders DataRowToModel(DataRow row)
+		public BookShop.Model.orders DataRowToModel(DataRow row)
 		{
-			BookShop.Model.Orders model=new BookShop.Model.Orders();
+			BookShop.Model.orders model=new BookShop.Model.orders();
 			if (row != null)
 			{
-				if(row["OrderId"]!=null)
+				if(row["oid"]!=null)
 				{
-					model.OrderId=row["OrderId"].ToString();
+					model.oid=row["oid"].ToString();
 				}
-				if(row["OrderDate"]!=null && row["OrderDate"].ToString()!="")
+				if(row["ordertime"]!=null && row["ordertime"].ToString()!="")
 				{
-					model.OrderDate=DateTime.Parse(row["OrderDate"].ToString());
+					model.ordertime=DateTime.Parse(row["ordertime"].ToString());
 				}
-				if(row["UserId"]!=null && row["UserId"].ToString()!="")
+				if(row["total"]!=null && row["total"].ToString()!="")
 				{
-					model.UserId=int.Parse(row["UserId"].ToString());
-				}
-				if(row["TotalPrice"]!=null && row["TotalPrice"].ToString()!="")
-				{
-					model.TotalPrice=decimal.Parse(row["TotalPrice"].ToString());
-				}
-				if(row["PostAddress"]!=null)
-				{
-					model.PostAddress=row["PostAddress"].ToString();
+					model.total=decimal.Parse(row["total"].ToString());
 				}
 				if(row["state"]!=null && row["state"].ToString()!="")
 				{
 					model.state=int.Parse(row["state"].ToString());
+				}
+				if(row["uid"]!=null && row["uid"].ToString()!="")
+				{
+					model.uid=int.Parse(row["uid"].ToString());
+				}
+				if(row["address"]!=null)
+				{
+					model.address=row["address"].ToString();
 				}
 			}
 			return model;
@@ -213,34 +214,13 @@ namespace BookShop.DAL
 		public DataSet GetList(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select OrderId,OrderDate,UserId,TotalPrice,PostAddress,state ");
-			strSql.Append(" FROM Orders ");
+			strSql.Append("select oid,ordertime,total,state,uid,address ");
+			strSql.Append(" FROM orders ");
 			if(strWhere.Trim()!="")
 			{
 				strSql.Append(" where "+strWhere);
 			}
-			return DbHelperSQL.Query(strSql.ToString());
-		}
-
-		/// <summary>
-		/// 获得前几行数据
-		/// </summary>
-		public DataSet GetList(int Top,string strWhere,string filedOrder)
-		{
-			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select ");
-			if(Top>0)
-			{
-				strSql.Append(" top "+Top.ToString());
-			}
-			strSql.Append(" OrderId,OrderDate,UserId,TotalPrice,PostAddress,state ");
-			strSql.Append(" FROM Orders ");
-			if(strWhere.Trim()!="")
-			{
-				strSql.Append(" where "+strWhere);
-			}
-			strSql.Append(" order by " + filedOrder);
-			return DbHelperSQL.Query(strSql.ToString());
+			return DbHelperMySQL.Query(strSql.ToString());
 		}
 
 		/// <summary>
@@ -249,7 +229,7 @@ namespace BookShop.DAL
 		public int GetRecordCount(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append("select count(1) FROM Orders ");
+			strSql.Append("select count(1) FROM orders ");
 			if(strWhere.Trim()!="")
 			{
 				strSql.Append(" where "+strWhere);
@@ -278,16 +258,16 @@ namespace BookShop.DAL
 			}
 			else
 			{
-				strSql.Append("order by T.OrderId desc");
+				strSql.Append("order by T.oid desc");
 			}
-			strSql.Append(")AS Row, T.*  from Orders T ");
+			strSql.Append(")AS Row, T.*  from orders T ");
 			if (!string.IsNullOrEmpty(strWhere.Trim()))
 			{
 				strSql.Append(" WHERE " + strWhere);
 			}
 			strSql.Append(" ) TT");
 			strSql.AppendFormat(" WHERE TT.Row between {0} and {1}", startIndex, endIndex);
-			return DbHelperSQL.Query(strSql.ToString());
+			return DbHelperMySQL.Query(strSql.ToString());
 		}
 
 		/*
@@ -296,23 +276,23 @@ namespace BookShop.DAL
 		/// </summary>
 		public DataSet GetList(int PageSize,int PageIndex,string strWhere)
 		{
-			SqlParameter[] parameters = {
-					new SqlParameter("@tblName", SqlDbType.VarChar, 255),
-					new SqlParameter("@fldName", SqlDbType.VarChar, 255),
-					new SqlParameter("@PageSize", SqlDbType.Int),
-					new SqlParameter("@PageIndex", SqlDbType.Int),
-					new SqlParameter("@IsReCount", SqlDbType.Bit),
-					new SqlParameter("@OrderType", SqlDbType.Bit),
-					new SqlParameter("@strWhere", SqlDbType.VarChar,1000),
+			MySqlParameter[] parameters = {
+					new MySqlParameter("@tblName", MySqlDbType.VarChar, 255),
+					new MySqlParameter("@fldName", MySqlDbType.VarChar, 255),
+					new MySqlParameter("@PageSize", MySqlDbType.Int32),
+					new MySqlParameter("@PageIndex", MySqlDbType.Int32),
+					new MySqlParameter("@IsReCount", MySqlDbType.Bit),
+					new MySqlParameter("@OrderType", MySqlDbType.Bit),
+					new MySqlParameter("@strWhere", MySqlDbType.VarChar,1000),
 					};
-			parameters[0].Value = "Orders";
-			parameters[1].Value = "OrderId";
+			parameters[0].Value = "orders";
+			parameters[1].Value = "oid";
 			parameters[2].Value = PageSize;
 			parameters[3].Value = PageIndex;
 			parameters[4].Value = 0;
 			parameters[5].Value = 0;
 			parameters[6].Value = strWhere;	
-			return DbHelperSQL.RunProcedure("UP_GetRecordByPage",parameters,"ds");
+			return DbHelperMySQL.RunProcedure("UP_GetRecordByPage",parameters,"ds");
 		}*/
 
 		#endregion  BasicMethod

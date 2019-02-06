@@ -79,6 +79,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Account\Register.aspx" />
     <Content Include="Controls\checkright.ascx" />
     <Content Include="Controls\copyright.ascx" />
     <Content Include="Css\book_list.css" />
@@ -146,6 +147,11 @@
     <Content Include="Css\themes\ui-lightness\jquery.ui.tabs.css" />
     <Content Include="Css\themes\ui-lightness\jquery.ui.theme.css" />
     <Content Include="Global.asax" />
+    <Content Include="ashx\CheckUserName.ashx" />
+    <Content Include="ashx\CheckMail.ashx" />
+    <Content Include="ashx\ValidateCode.ashx" />
+    <Content Include="ashx\CheckValidateCode.ashx" />
+    <Content Include="ashx\RegisterUser.ashx" />
     <None Include="packages.config" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
@@ -153,6 +159,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Accounts\Add.aspx.cs">
       <DependentUpon>add.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -390,6 +403,21 @@
     </Compile>
     <Compile Include="Admin\Top.aspx.designer.cs">
       <DependentUpon>Top.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ashx\CheckMail.ashx.cs">
+      <DependentUpon>CheckMail.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ashx\CheckUserName.ashx.cs">
+      <DependentUpon>CheckUserName.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ashx\CheckValidateCode.ashx.cs">
+      <DependentUpon>CheckValidateCode.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ashx\RegisterUser.ashx.cs">
+      <DependentUpon>RegisterUser.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ashx\ValidateCode.ashx.cs">
+      <DependentUpon>ValidateCode.ashx</DependentUpon>
     </Compile>
     <Compile Include="Controls\CheckRight.ascx.cs">
       <DependentUpon>checkright.ascx</DependentUpon>
