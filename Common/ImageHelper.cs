@@ -1,7 +1,8 @@
 ﻿using System.Drawing;
+using System.Web;
 
 
-namespace pstoh.WebDemo3.Common
+namespace BookShop.Common
 {
 	public abstract  class ImageHelper
 	{
@@ -82,6 +83,33 @@ namespace pstoh.WebDemo3.Common
 				originalImage.Dispose();
 				bitmap.Dispose();
 				g.Dispose();
+			}
+		}
+
+		/// <summary>
+		/// 
+		/// 剪贴图片
+		/// </summary>
+		/// <param name="context">http上下文</param>
+		/// <param name="x">要剪贴图片的x坐标</param>
+		/// <param name="y">要剪贴图片的y'坐标</param>
+		/// <param name="w"></param>
+		/// <param name="h"></param>
+		/// <param name="imagePath">图片路径</param>
+		/// <param name="newPath">剪贴图片保存路径</param>
+		public static void CutImage(HttpContext context, int x, int y, int w, int h, string imagePath, string newPath)
+		{
+			using (Bitmap bit = new Bitmap(w, h))
+			{
+				using (Graphics g = Graphics.FromImage(bit))
+				{
+					using (Image img = Image.FromFile(context.Request.MapPath(imagePath)))
+					{
+						g.DrawImage(img, new Rectangle(0, 0, w, h), new Rectangle(x, y, w, h), GraphicsUnit.Pixel);
+
+						bit.Save(context.Request.MapPath(newPath), System.Drawing.Imaging.ImageFormat.Jpeg);
+					}
+				}
 			}
 		}
 

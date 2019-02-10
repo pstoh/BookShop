@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="BookShop.Web.Account.Register" MasterPageFile="~/MainMaster/MasterPage.Master" %>
+﻿
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="BookShop.Web.Account.Register" MasterPageFile="~/MainMaster/MasterPage.Master" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
@@ -52,16 +53,20 @@
 
         //用户注册
             $('#btnReg').click(function () {
-                if (!($('#userNameMsg').val() == 'OK' || $('#userMailMsg').val() == 'OK' || $('#validateCodeMsg').val() == 'OK')) {
+                //alert('注册');
+                if (!($('#userNameMsg').text() == 'OK' || $('#userMailMsg').text() == 'OK' || $('#validateCodeMsg').textS() == 'OK')) {
                     return false;
                 }
                 //校验密码省略
-                var pars = $('#aspentForm').serializeArray();
+                var pars = $('#aspnetForm').serializeArray();
+                //alert(pars);
                 $.post('/ashx/RegisterUser.ashx', pars, function (data) {
                     var msg = data.split(':');
                     if (msg[0] == 'yes') {
-                        window.location.href = '/Index.aspx';
+                        alert('注册成功');
+                        location.href = '/Index.aspx';
                     } else {
+                        alert(msg[1]);
                         $('#userCodeMsg').text(msg[1]);
                     }
                 });
@@ -92,7 +97,7 @@
                 var userNameObj = $('#txtUserName');
                 if (userNameObj.val() != '') {
                     var regex = /^\w+$/;
-                    if (regex.test($(this).val())) {
+                    if (regex.test(userNameObj.val())) {
                         $.post('/ashx/CheckUserName.ashx', { 'userName': userNameObj.val() }, function (data) {
                             if (data == 'yes') {
                                 $('#userNameMsg').text('OK');
@@ -111,7 +116,7 @@
             //校验邮箱
             function checkMail() {
                 var mailObj = $('#txtUserMail');
-                if ($(this).val() != '') {
+                if (mailObj.val() != '') {
                     var regex = /\w+@\w+(\.\w+)+/;
                     if (regex.test(mailObj.val())) {
                         $.post('/ashx/CheckMail.ashx', { 'mail': mailObj.val() }, function (data) {
@@ -194,7 +199,7 @@
                             <tr>
                                 <td width="24%" height="26" align="center" valign="top">验证码：</td>
                                 <td valign="top" width="37%" align="left">
-                                    <input type="text" name="txtCode" id="txtValidateCode" /><a href="javascript:void(0)" id="valiateCode"><img src="/ashx/ValidateCode.ashx?id=1" id="imgCode" /></a><span style="font-size: 14px; color: red" id="validateCodeMsg"></span></td>
+                                    <input type="text" name="ValidateCode" id="txtValidateCode" /><a href="javascript:void(0)" id="valiateCode"><img src="/ashx/ValidateCode.ashx?id=1" id="imgCode" /></a><span style="font-size: 14px; color: red" id="validateCodeMsg"></span></td>
                             </tr>
                             <tr>
                                 <td colspan="2" align="center">

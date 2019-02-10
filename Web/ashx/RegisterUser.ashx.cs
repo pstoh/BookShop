@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BookShop.Model.Enum;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -74,16 +75,18 @@ namespace BookShop.Web.ashx
 				return false;
 			}
 
-
-			new BLL.user().Add(new Model.user()
+			var model = new Model.user()
 			{
 				username = userRealName,
 				LoginID = userName,
 				Address = address,
-				password = pwd,
+				password = Common.MD5Helper.GetMD5ByString(Common.MD5Helper.GetMD5ByString(pwd)),
 				email = email,
 				Phone = phone,
-			});
+				code=""
+			};
+			new BLL.user().Add(model);
+			model.State.sid = Convert.ToInt32(UserStateEnum.UserNormarl);
 			msg = "OK";
 			return true;
 		}

@@ -1,4 +1,4 @@
-<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="UserMaster.master.cs" Inherits="BookShop.Web.MainMaster.UserMaster" %>
+ï»¿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="UserMaster.master.cs" Inherits="BookShop.Web.MainMaster.UserMaster" %>
 <%@ Import Namespace="BookShop.Model" %>
 
 <!DOCTYPE html>
@@ -6,11 +6,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<title>±±¾©ÊÐÐÂ»ªÊéµêÍõ¸®¾®Êéµê - ÍøÉÏÊéµê80ÕÛÆð£¬¹ºÊéÂú99ÔªÃâÔË·Ñ£¡</title>
+<title>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½80ï¿½ï¿½ï¿½ð£¬¹ï¿½ï¿½ï¿½ï¿½ï¿½99Ôªï¿½ï¿½ï¿½Ë·Ñ£ï¿½</title>
 
-<meta content="±±¾©ÊÐÐÂ»ªÊéµêÍõ¸®¾®Êéµê£¬ÖÂÁ¦ÓÚÌá¹©×¨Òµ»¯¹ºÊé·þÎñ.ÍøÉÏ¹ºÊéÑ¡ÔñÐÂ»ªÊéµêÍõ¸®¾®Êéµê(ÍøÉÏÊéµê),¹ºÊé·ÅÐÄÓÐ±£ÕÏ.Íõ¸®¾®Êéµêµç»°:010-65132842.010-65252592" name="description"/>
-<meta content="Íõ¸®¾®Êéµê ÐÂ»ªÊéµê ÍøÉÏÊéµê ÍøÉÏ¹ºÊé ±±¾©Í¼Êé´óÏÃ" name="keywords" />
+<meta content="ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½á¹©×¨Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.ï¿½ï¿½ï¿½Ï¹ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½Â»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½),ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ç»°:010-65132842.010-65252592" name="description"/>
+<meta content="ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Â»ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½" name="keywords" />
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+
 <link rel="Shortcut Icon" href="/favicon.ico"/>
 <link href="/Css/index.css" rel="stylesheet" type="text/css"/>
 
@@ -42,14 +43,14 @@
 	<div class="m_c" style="width: 736px; height: 27px">
  
 	<span class="l">
-      <a href="http://www.beifabook.com" target="_blank">±±·¢Í¼ÊéÍøÖ÷ÍøÕ¾</a> |&nbsp;
-      <a href="http://www.bjbb.com" target="_blank">±±¾©Í¼Êé´óÏÃ</a>&nbsp; |
-      <a href="http://www.wfjsd.com/" target="_blank"><font color="#00A0E9">Íõ¸®¾®Êéµê</font></a>&nbsp;|
-      <a href="http://www.zgcbb.com/" target="_blank">ÖÐ¹Ø´åÍ¼Êé´óÏÃ</a>&nbsp; |
-      <a href="http://www.yycbook.com/" target="_blank">ÑÇÔË´åÍ¼Êé´óÏÃ</a>&nbsp; |
-      <a href="http://www.hs-book.com" target="_blank">»¨ÊÐÊéµê</a>&nbsp; |  
-	  <a href="/OrderInfo.aspx" >ÎÒµÄ¶©µ¥</a>&nbsp;&nbsp;
-        <span style="font-size:14px">»¶Ó­ <span style="color:red"><%=((User)Session["userInfo"]).LoginId  %></span>µÇÂ¼&nbsp;&nbsp<a href="javascript:void(0)" id="logout">ÍË³ö</a></span>
+      <a href="http://www.beifabook.com" target="_blank">ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¾</a> |&nbsp;
+      <a href="http://www.bjbb.com" target="_blank">ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½</a>&nbsp; |
+      <a href="http://www.wfjsd.com/" target="_blank"><font color="#00A0E9">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</font></a>&nbsp;|
+      <a href="http://www.zgcbb.com/" target="_blank">ï¿½Ð¹Ø´ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½</a>&nbsp; |
+      <a href="http://www.yycbook.com/" target="_blank">ï¿½ï¿½ï¿½Ë´ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½</a>&nbsp; |
+      <a href="http://www.hs-book.com" target="_blank">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</a>&nbsp; |  
+	  <a href="/OrderInfo.aspx" >ï¿½ÒµÄ¶ï¿½ï¿½ï¿½</a>&nbsp;&nbsp;
+        <span style="font-size:14px">ï¿½ï¿½Ó­ <span style="color:red"><%=((user)Session["userInfo"]).LoginID  %></span>ï¿½ï¿½Â¼&nbsp;&nbsp<a href="javascript:void(0)" id="logout">ï¿½Ë³ï¿½</a></span>
                                            
                                            
 
@@ -57,16 +58,16 @@
 	</span></div></div>
 
 
-	<div style="WIDTH: 750px;"><img src="/images/¼¯ÍÅÍøÕ¾1.jpg" width="780" height="93" /></div>
+	<div style="WIDTH: 750px;"><img src="/images/ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¾1.jpg" width="780" height="93" /></div>
 <div id="tabsI" style="width: 750px; height: 32px">
                                 <ul>
                                         <!-- CSS Tabs -->
-<li><a href="/default.aspx"><span>Ê×Ò³</span></a></li>
-<li><a href="/booklist.aspx"><span>Í¼ÊéÁÐ±í</span></a></li>
-<li><a href="/cart.aspx"><span>ÎÒµÄ¹ºÎï³µ</span></a></li>
-<li><a href="/Account/login.aspx"><span>µÇÂ¼</span></a></li>
-<li><a href="/Account/register.aspx"><span>×¢²á</span></a></li>
-<li><a href="/rss.aspx"><span>×îÐÂÍ¼Êé¶©ÔÄ</span></a></li>
+<li><a href="/default.aspx"><span>ï¿½ï¿½Ò³</span></a></li>
+<li><a href="/booklist.aspx"><span>Í¼ï¿½ï¿½ï¿½Ð±ï¿½</span></a></li>
+<li><a href="/cart.aspx"><span>ï¿½ÒµÄ¹ï¿½ï¿½ï³µ</span></a></li>
+<li><a href="/Account/login.aspx"><span>ï¿½ï¿½Â¼</span></a></li>
+<li><a href="/Account/register.aspx"><span>×¢ï¿½ï¿½</span></a></li>
+<li><a href="/rss.aspx"><span>ï¿½ï¿½ï¿½ï¿½Í¼ï¿½é¶©ï¿½ï¿½</span></a></li>
 
 
                                 </ul>
@@ -99,7 +100,7 @@
                   <td width="80" height="34">
 					  
                     </td>
-                  <td width="10" height="34">¡¡</td>
+                  <td width="10" height="34">ï¿½ï¿½</td>
                   <td width="80" height="34">
 					<a href="/search.asp" target="_blank"></a> &nbsp;&nbsp;<a href="rss.aspx"></a></td>
                   </tr>
@@ -144,12 +145,12 @@
 <div id="footer" style="clear:both; position:relative; bottom:0px" >
   <table border="0" width="100%" class="categories1">
     <tr>
-      <td align="center">¡¡
+      <td align="center">ï¿½ï¿½
         <ul>
-            <li><a href='#'>¹ØÓÚÎÒÃÇÍõ¸®¾®Êéµê><a href='#'>¹ØÓÚÎÒÃÇÍõ¸®¾®Êéµê</li>
-          <li><a href="#">ÊéµêÓªÒµÊ±¼ä£º9£º30-21£º00 </a> </li>
+            <li><a href='#'>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½><a href='#'>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</li>
+          <li><a href="#">ï¿½ï¿½ï¿½ÓªÒµÊ±ï¿½ä£º9ï¿½ï¿½30-21ï¿½ï¿½00 </a> </li>
           <li> <a href="#"; target=_blank; ><img src="/images/logo123x40.jpg" width="123" height="40" border="0"></a> <a href="#"; target=_blank; ><img border="0" src="/Images/kaixin.jpg"></a> </li>
-          <li>&nbsp;<span lang="zh-cn"><a title="¾©ICP±¸08001692ºÅ" href="http://www.miibeian.gov.cn">¾©ICP±¸08987373ºÅ</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </li>
+          <li>&nbsp;<span lang="zh-cn"><a title="ï¿½ï¿½ICPï¿½ï¿½08001692ï¿½ï¿½" href="http://www.miibeian.gov.cn">ï¿½ï¿½ICPï¿½ï¿½08987373ï¿½ï¿½</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </li>
         </ul></td>
     
     </tr>

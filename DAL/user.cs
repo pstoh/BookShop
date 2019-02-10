@@ -65,7 +65,7 @@ namespace BookShop.DAL
 			parameters[4].Value = model.Address;
 			parameters[5].Value = model.Phone;
 			parameters[6].Value = model.code;
-			parameters[7].Value = model.state;
+			parameters[7].Value = model.State.sid;
 
 			int rows=DbHelperMySQL.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
@@ -110,7 +110,7 @@ namespace BookShop.DAL
 			parameters[4].Value = model.Address;
 			parameters[5].Value = model.Phone;
 			parameters[6].Value = model.code;
-			parameters[7].Value = model.state;
+			parameters[7].Value = model.State.sid;
 			parameters[8].Value = model.id;
 
 			int rows=DbHelperMySQL.ExecuteSql(strSql.ToString(),parameters);
@@ -237,7 +237,7 @@ namespace BookShop.DAL
 				}
 				if(row["state"]!=null && row["state"].ToString()!="")
 				{
-					model.state=int.Parse(row["state"].ToString());
+					model.State.sid=int.Parse(row["state"].ToString());
 				}
 			}
 			return model;

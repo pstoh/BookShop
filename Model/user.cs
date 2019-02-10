@@ -19,6 +19,7 @@ namespace BookShop.Model
 		private string _phone;
 		private string _code;
 		private int? _state;
+		private userstate userState = new userstate();
 		/// <summary>
 		/// auto_increment
 		/// </summary>
@@ -86,10 +87,17 @@ namespace BookShop.Model
 		/// <summary>
 		/// 
 		/// </summary>
-		public int? state
+		//public int? state
+		//{
+			//set{ _state=value;}
+			//get{return _state;}
+		//}
+
+		public userstate State
 		{
-			set{ _state=value;}
-			get{return _state;}
+			get { return userState; }
+
+			set { userState = value; }
 		}
 		#endregion Model
 

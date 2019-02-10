@@ -18,6 +18,11 @@ namespace BookShop.BLL
 			return dal.GetModel(userName);
 		}
 
+		public Model.user GetModel(String userName,String pwd)
+		{
+			return dal.GetModel(userName,pwd);
+		}
+
 		public Model.user GetModelByMail(String mail)
 		{
 			return dal.GetModelByMail(mail);
