@@ -143,12 +143,34 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="SysManage.cs" />
-    <Compile Include="book.cs" />
-    <Compile Include="category.cs" />
-    <Compile Include="orderitem.cs" />
-    <Compile Include="orders.cs" />
-    <Compile Include="user.cs" />
-    <Compile Include="userstate.cs" />
+    <Compile Include="ActionGroup.cs" />
+    <Compile Include="ActionGroupActionInfo.cs" />
+    <Compile Include="ActionInfo.cs" />
+    <Compile Include="Articel_Words.cs" />
+    <Compile Include="BookComment.cs" />
+    <Compile Include="Books.cs" />
+    <Compile Include="Cart.cs" />
+    <Compile Include="Categories.cs" />
+    <Compile Include="CheckEmail.cs" />
+    <Compile Include="Department.cs" />
+    <Compile Include="keyWordsRank.cs" />
+    <Compile Include="OrderBook.cs" />
+    <Compile Include="Orders.cs" />
+    <Compile Include="Publishers.cs" />
+    <Compile Include="R_UserInfo_ActionInfo.cs" />
+    <Compile Include="Role.cs" />
+    <Compile Include="RoleActionGroup.cs" />
+    <Compile Include="RoleActionInfo.cs" />
+    <Compile Include="RoleDepartment.cs" />
+    <Compile Include="SearchDetails.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="sysdiagrams.cs" />
+    <Compile Include="SysFun.cs" />
+    <Compile Include="UserInfo.cs" />
+    <Compile Include="UserInfoRole.cs" />
+    <Compile Include="Users.cs" />
+    <Compile Include="UserStates.cs" />
+    <Compile Include="VidoFile.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

@@ -16,7 +16,7 @@ namespace BookShop.Web.ashx
 			context.Response.ContentType = "text/plain";
 			//context.Response.Write("Hello World");
 			String mail = context.Request["mail"];
-			if (new BLL.user().GetModelByMail(mail) == null)
+			if (new BLL.Users().GetModelByMail(mail) == null)
 			{
 				context.Response.Write("yes");
 			}

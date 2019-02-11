@@ -50,7 +50,7 @@
       <a href="http://www.yycbook.com/" target="_blank">���˴�ͼ�����</a>&nbsp; |
       <a href="http://www.hs-book.com" target="_blank">�������</a>&nbsp; |  
 	  <a href="/OrderInfo.aspx" >�ҵĶ���</a>&nbsp;&nbsp;
-        <span style="font-size:14px">��ӭ <span style="color:red"><%=((user)Session["userInfo"]).LoginID  %></span>��¼&nbsp;&nbsp<a href="javascript:void(0)" id="logout">�˳�</a></span>
+        <span style="font-size:14px">��ӭ <span style="color:red"><%=((Users)Session["userInfo"]).LoginId  %></span>��¼&nbsp;&nbsp<a href="javascript:void(0)" id="logout">�˳�</a></span>
                                            
                                            
 

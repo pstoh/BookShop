@@ -16,7 +16,7 @@ namespace BookShop.Web.CheckUserState
 			}
 			String name = Request.Cookies["cp1"].Value;
 			//String pwd = Request.Cookies["cp2"].Value;
-			Model.user model=new BLL.user().GetModel(name);
+			Model.Users model=new BLL.Users().GetModel(name);
 			if (model==null||!Common.WebHelper.CheckCookie(model))
 			{
 				Response.Redirect("/account/Login.aspx?returnurl=");

@@ -22,7 +22,7 @@ namespace BookShop.Web.ashx
 				return;
 			}
 
-			if (new BLL.user().GetModel(userName) == null)
+			if (new BLL.Users().GetModel(userName) == null)
 			{
 				context.Response.Write("yes");
 			}

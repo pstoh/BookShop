@@ -6,12 +6,12 @@ using BookShop.Model;
 namespace BookShop.BLL
 {
 	/// <summary>
-	/// userstate
+	/// ActionInfo
 	/// </summary>
-	public partial class userstate
+	public partial class ActionInfo
 	{
-		private readonly BookShop.DAL.userstate dal=new BookShop.DAL.userstate();
-		public userstate()
+		private readonly BookShop.DAL.ActionInfo dal=new BookShop.DAL.ActionInfo();
+		public ActionInfo()
 		{}
 		#region  BasicMethod
 
@@ -26,15 +26,15 @@ namespace BookShop.BLL
 		/// <summary>
 		/// 是否存在该记录
 		/// </summary>
-		public bool Exists(int sid)
+		public bool Exists(int ID)
 		{
-			return dal.Exists(sid);
+			return dal.Exists(ID);
 		}
 
 		/// <summary>
 		/// 增加一条数据
 		/// </summary>
-		public bool Add(BookShop.Model.userstate model)
+		public int  Add(BookShop.Model.ActionInfo model)
 		{
 			return dal.Add(model);
 		}
@@ -42,7 +42,7 @@ namespace BookShop.BLL
 		/// <summary>
 		/// 更新一条数据
 		/// </summary>
-		public bool Update(BookShop.Model.userstate model)
+		public bool Update(BookShop.Model.ActionInfo model)
 		{
 			return dal.Update(model);
 		}
@@ -50,41 +50,41 @@ namespace BookShop.BLL
 		/// <summary>
 		/// 删除一条数据
 		/// </summary>
-		public bool Delete(int sid)
+		public bool Delete(int ID)
 		{
 			
-			return dal.Delete(sid);
+			return dal.Delete(ID);
 		}
 		/// <summary>
 		/// 删除一条数据
 		/// </summary>
-		public bool DeleteList(string sidlist )
+		public bool DeleteList(string IDlist )
 		{
-			return dal.DeleteList(Maticsoft.Common.PageValidate.SafeLongFilter(sidlist,0) );
+			return dal.DeleteList(Maticsoft.Common.PageValidate.SafeLongFilter(IDlist,0) );
 		}
 
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>
-		public BookShop.Model.userstate GetModel(int sid)
+		public BookShop.Model.ActionInfo GetModel(int ID)
 		{
 			
-			return dal.GetModel(sid);
+			return dal.GetModel(ID);
 		}
 
 		/// <summary>
 		/// 得到一个对象实体，从缓存中
 		/// </summary>
-		public BookShop.Model.userstate GetModelByCache(int sid)
+		public BookShop.Model.ActionInfo GetModelByCache(int ID)
 		{
 			
-			string CacheKey = "userstateModel-" + sid;
+			string CacheKey = "ActionInfoModel-" + ID;
 			object objModel = Maticsoft.Common.DataCache.GetCache(CacheKey);
 			if (objModel == null)
 			{
 				try
 				{
-					objModel = dal.GetModel(sid);
+					objModel = dal.GetModel(ID);
 					if (objModel != null)
 					{
 						int ModelCache = Maticsoft.Common.ConfigHelper.GetConfigInt("ModelCache");
@@ -93,7 +93,7 @@ namespace BookShop.BLL
 				}
 				catch{}
 			}
-			return (BookShop.Model.userstate)objModel;
+			return (BookShop.Model.ActionInfo)objModel;
 		}
 
 		/// <summary>
@@ -104,9 +104,16 @@ namespace BookShop.BLL
 			return dal.GetList(strWhere);
 		}
 		/// <summary>
+		/// 获得前几行数据
+		/// </summary>
+		public DataSet GetList(int Top,string strWhere,string filedOrder)
+		{
+			return dal.GetList(Top,strWhere,filedOrder);
+		}
+		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<BookShop.Model.userstate> GetModelList(string strWhere)
+		public List<BookShop.Model.ActionInfo> GetModelList(string strWhere)
 		{
 			DataSet ds = dal.GetList(strWhere);
 			return DataTableToList(ds.Tables[0]);
@@ -114,13 +121,13 @@ namespace BookShop.BLL
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
-		public List<BookShop.Model.userstate> DataTableToList(DataTable dt)
+		public List<BookShop.Model.ActionInfo> DataTableToList(DataTable dt)
 		{
-			List<BookShop.Model.userstate> modelList = new List<BookShop.Model.userstate>();
+			List<BookShop.Model.ActionInfo> modelList = new List<BookShop.Model.ActionInfo>();
 			int rowsCount = dt.Rows.Count;
 			if (rowsCount > 0)
 			{
-				BookShop.Model.userstate model;
+				BookShop.Model.ActionInfo model;
 				for (int n = 0; n < rowsCount; n++)
 				{
 					model = dal.DataRowToModel(dt.Rows[n]);

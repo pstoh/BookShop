@@ -75,18 +75,17 @@ namespace BookShop.Web.ashx
 				return false;
 			}
 
-			var model = new Model.user()
+			var model = new Model.Users()
 			{
-				username = userRealName,
-				LoginID = userName,
+				Name = userRealName,
+				LoginId = userName,
 				Address = address,
-				password = Common.MD5Helper.GetMD5ByString(Common.MD5Helper.GetMD5ByString(pwd)),
-				email = email,
+				LoginPwd = Common.MD5Helper.GetMD5ByString(Common.MD5Helper.GetMD5ByString(pwd)),
+				Mail = email,
 				Phone = phone,
-				code=""
 			};
-			new BLL.user().Add(model);
-			model.State.sid = Convert.ToInt32(UserStateEnum.UserNormarl);
+			model.State.Id = Convert.ToInt32(UserStateEnum.UserNormarl);
+			new BLL.Users().Add(model);
 			msg = "OK";
 			return true;
 		}

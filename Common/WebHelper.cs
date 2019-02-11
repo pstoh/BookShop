@@ -8,7 +8,7 @@ namespace BookShop.Common
 {
 	public abstract class WebHelper
 	{
-		public static bool CheckCookie(Model.user model)
+		public static bool CheckCookie(Model.Users model)
 		{
 			bool flag = false;
 			HttpContext context = HttpContext.Current;
@@ -16,7 +16,7 @@ namespace BookShop.Common
 			String name = context.Request.Cookies["cp1"] == null ? null : context.Request.Cookies["cp1"].Value;
 			if (pwd != null && name!=null)
 			{
-				if (model.LoginID == name && model.password == pwd)
+				if (model.LoginId == name && model.LoginPwd == pwd)
 				{
 					context.Session["userInfo"] = model;
 				flag = true;

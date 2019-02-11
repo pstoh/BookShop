@@ -11,7 +11,7 @@ namespace BookShop.Web.Account
 	{
 		public String Msg { get; set; }
 		public String ReturnUrl{ get; set; }
-		private BLL.user UserService = new BLL.user();
+		private BLL.Users UserService = new BLL.Users();
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			if (Request.HttpMethod.ToLower() == "post")
@@ -34,7 +34,7 @@ namespace BookShop.Web.Account
 			if (Request.Cookies["cp1"] != null)
 			{
 				String name = Request.Cookies["cp1"].Value;
-				Model.user model = UserService.GetModel(name);
+				Model.Users model = UserService.GetModel(name);
 				if (Common.WebHelper.CheckCookie(model))
 				{
 					Response.Redirect("/UserInfoManager/UserCenter.aspx");
@@ -53,7 +53,7 @@ namespace BookShop.Web.Account
 			{
 				pwd = Common.MD5Helper.GetMD5ByString(pwd);
 				pwd = Common.MD5Helper.GetMD5ByString(pwd);
-				Model.user model = UserService.GetModel(userName, pwd);
+				Model.Users model = UserService.GetModel(userName, pwd);
 				if (model == null)
 				{
 					Msg = "用户名密码错误!!";
