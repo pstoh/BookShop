@@ -187,7 +187,7 @@ SPAN.papa {
                             <span class="reg_tit">
                                 <strong>找回密码</strong><span>请输入您注册时的电子邮箱</span><span class="fr">
 
-                                    <a href="http://www.itcast.com/Account/Login">登陆</a>
+                                    <a href="void(0)" id="login">登陆</a>
                                 </span>
                             </span>
                             <dl>
@@ -228,6 +228,27 @@ SPAN.papa {
             }, function () {
                 $("#pageflip img").stop().animate({ width: '50px', height: '52px' }, 220);
                 $(".msg_block").stop().animate({ width: '50px', height: '50px' }, 200);
+            });
+
+            $('#btnForget').click(function () {
+                $('#logindiv').css('display', 'none');
+                $('#forgetdiv').css('display', 'block');
+            });
+
+            $('#login').click(function () {
+                $('#logindiv').css('display', 'block');
+                $('#forgetdiv').css('display', 'none');
+            });
+
+            $('#btnForgetsub').click(function () {
+                $.post('/ashx/FindUserPassword.ashx', { 'mail': $('#txtforumail').val() }, function (data) {
+                    if (data == 'OK') {
+                        alert('新密码已发送到你邮箱,请注意查收!');
+                    }
+                    else {
+                        alert('邮箱错误..');
+                    }
+                });
             });
 
         });

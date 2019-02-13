@@ -138,6 +138,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MyClass\Books.cs" />
+    <Compile Include="MyClass\Settings.cs" />
     <Compile Include="MyClass\UserDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

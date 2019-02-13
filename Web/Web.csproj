@@ -81,6 +81,8 @@
   <ItemGroup>
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="BookDetail.aspx" />
+    <Content Include="BookList.aspx" />
     <Content Include="Controls\checkright.ascx" />
     <Content Include="Controls\copyright.ascx" />
     <Content Include="Css\book_list.css" />
@@ -156,6 +158,7 @@
     <Content Include="MainMaster\UserMaster.Master" />
     <Content Include="ashx\Logout.ashx" />
     <Content Include="ashx\Upload.ashx" />
+    <Content Include="ashx\FindUserPassword.ashx" />
     <None Include="packages.config" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
@@ -550,6 +553,9 @@
     <Compile Include="ashx\CheckValidateCode.ashx.cs">
       <DependentUpon>CheckValidateCode.ashx</DependentUpon>
     </Compile>
+    <Compile Include="ashx\FindUserPassword.ashx.cs">
+      <DependentUpon>FindUserPassword.ashx</DependentUpon>
+    </Compile>
     <Compile Include="ashx\Logout.ashx.cs">
       <DependentUpon>Logout.ashx</DependentUpon>
     </Compile>
@@ -561,6 +567,20 @@
     </Compile>
     <Compile Include="ashx\ValidateCode.ashx.cs">
       <DependentUpon>ValidateCode.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="BookDetail.aspx.cs">
+      <DependentUpon>BookDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BookDetail.aspx.designer.cs">
+      <DependentUpon>BookDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BookList.aspx.cs">
+      <DependentUpon>BookList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BookList.aspx.designer.cs">
+      <DependentUpon>BookList.aspx</DependentUpon>
     </Compile>
     <Compile Include="CheckUserState\CheckUserSession.cs">
       <SubType>ASPXCodeBehind</SubType>
@@ -613,6 +633,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserInfoManager\UserCenter.aspx.cs">
       <DependentUpon>UserCenter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="UserInfoManager\UserCenter.aspx.designer.cs">
       <DependentUpon>UserCenter.aspx</DependentUpon>

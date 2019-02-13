@@ -116,7 +116,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MyClass\Books.cs" />
     <Compile Include="MyClass\MyUser.cs" />
+    <Compile Include="MyClass\Settings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

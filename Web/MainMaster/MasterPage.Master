@@ -1,4 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="BookShop.Web.MainMaster.MasterPage" %>
+<%@ Import Namespace="BookShop.Model" %>
 
 <!DOCTYPE html>
 
@@ -29,6 +30,43 @@
       <a href="http://www.yycbook.com/" target="_blank">亚运村图书大厦</a>&nbsp; |
       <a href="http://www.hs-book.com" target="_blank">花市书店</a>&nbsp; |
 	  <a href="/OrderInfo.aspx" >我的订单</a></span>
+                        <%if (Session["userInfo"] == null)
+          {
+              if (Request.Cookies["cp1"] != null)
+              {
+                  BookShop.BLL.Users userManager = new  BookShop.BLL.Users ();
+                  Users userInfo = userManager.GetModel(Request.Cookies["cp1"].Value);
+                  if (BookShop.Common.WebHelper.CheckCookie(userInfo))
+                  {  %>
+
+               欢迎<span style="font-size:14px;color:red"><%=userInfo.LoginId %></span>登录&nbsp;&nbsp;<a href="javascript:void(0)">退出</a>
+
+        <%
+                  }
+                  else
+                  {
+                      
+                   %>
+               <a href="/Account/Login.aspx?returnUrl=<%=Server.UrlEncode(Request.Url.ToString())%>">登录</a>
+            <%   
+                      
+                  }
+              }
+              else
+              {
+                  %>
+
+             <a href="/Account/Login.aspx?returnUrl=<%=Server.UrlEncode(Request.Url.ToString())%>">登录</a>
+        <%
+                  
+              }
+
+          }
+          else
+          { %>
+                 欢迎<span style="font-size:14px;color:red"><%=((Users)Session["userInfo"]).LoginId %></span>登录&nbsp;&nbsp;<a href="javascript:void(0)">退出</a> 
+
+        <%} %>
 
             </div>
         </div>

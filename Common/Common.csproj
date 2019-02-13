@@ -137,10 +137,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CacheHelper.cs" />
     <Compile Include="MD5Helper.cs" />
     <Compile Include="HttpProc.cs" />
     <Compile Include="ImageHelper.cs" />
     <Compile Include="MailSender.cs" />
+    <Compile Include="PageBarHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
