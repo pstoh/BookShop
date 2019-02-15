@@ -8,7 +8,7 @@ namespace BookShop.Web.ashx
 	/// <summary>
 	/// CheckUserLogin 的摘要说明
 	/// </summary>
-	public class CheckUserLogin : IHttpHandler
+	public class CheckUserLogin : IHttpHandler,System.Web.SessionState.IRequiresSessionState
 	{
 
 		public void ProcessRequest(HttpContext context)

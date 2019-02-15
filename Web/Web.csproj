@@ -83,6 +83,7 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="BookDetail.aspx" />
     <Content Include="BookList.aspx" />
+    <Content Include="Cart.aspx" />
     <Content Include="Controls\checkright.ascx" />
     <Content Include="Controls\copyright.ascx" />
     <Content Include="Css\book_list.css" />
@@ -161,6 +162,7 @@
     <Content Include="ashx\FindUserPassword.ashx" />
     <Content Include="ashx\ProcessComment.ashx" />
     <Content Include="ashx\CheckUserLogin.ashx" />
+    <Content Include="ashx\ProcessCart.ashx" />
     <None Include="packages.config" />
     <Content Include="Scripts\ckeditor\.htaccess" />
     <Content Include="Scripts\ckeditor\ckeditor.pack" />
@@ -752,6 +754,7 @@
     <Content Include="Scripts\ckeditor\_source\themes\default\theme.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.2.custom.min.js" />
     <Content Include="Scripts\jquery.imgareaselect.min.js" />
     <Content Include="Scripts\SWFUpload\handlers.js" />
     <Content Include="Scripts\SWFUpload\images\error.gif" />
@@ -1151,6 +1154,9 @@
     <Compile Include="ashx\Logout.ashx.cs">
       <DependentUpon>Logout.ashx</DependentUpon>
     </Compile>
+    <Compile Include="ashx\ProcessCart.ashx.cs">
+      <DependentUpon>ProcessCart.ashx</DependentUpon>
+    </Compile>
     <Compile Include="ashx\ProcessComment.ashx.cs">
       <DependentUpon>ProcessComment.ashx</DependentUpon>
     </Compile>
@@ -1176,6 +1182,13 @@
     </Compile>
     <Compile Include="BookList.aspx.designer.cs">
       <DependentUpon>BookList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cart.aspx.cs">
+      <DependentUpon>Cart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cart.aspx.designer.cs">
+      <DependentUpon>Cart.aspx</DependentUpon>
     </Compile>
     <Compile Include="CheckUserState\CheckUserSession.cs">
       <SubType>ASPXCodeBehind</SubType>

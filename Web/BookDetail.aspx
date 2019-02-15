@@ -1,62 +1,79 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="BookDetail.aspx.cs" Inherits="BookShop.Web.BookDetail" MasterPageFile="~/MainMaster/MasterPage.Master" %>
 
 <asp:Content ID="content1" ContentPlaceHolderID="head" runat="server">
-                    <style type="text/css">
+    <style type="text/css">
+        .new_F4 {
+            FONT-SIZE: 14px;
+            color: #404042;
+            font-weight: bold;
+        }
+    </style>
 
-.new_F4 {
-	FONT-SIZE: 14px ;color:#404042; font-weight: bold;
-}
-</style>
-      
-                    <style type="text/css">
-
-.samesortgoods_L17 {
-	LINE-HEIGHT: 230%
-}
-.samesortgoods_F3 {
-	FONT-SIZE: 12px ;color:#A8A7A7; 
-}
-A.samesortgoods_A1:link {
-	FONT-SIZE: 12px; COLOR: #554F4F; TEXT-DECORATION: none
-}
-A.samesortgoods_A1:active {
-	FONT-SIZE: 12px; COLOR: #554F4F; TEXT-DECORATION: underline
-}
-A.samesortgoods_A1:visited {
-	FONT-SIZE: 12px; COLOR: #554F4F; TEXT-DECORATION: none
-}
-A.samesortgoods_A1:hover {
-	FONT-SIZE: 12px; COLOR: #554F4F; TEXT-DECORATION: underline
-}
-</style>
-
-        <style type="text/css">
-
-.samesortgoods_L17 {
-	LINE-HEIGHT: 230%
-}
-.samesortgoods_F3 {
-	FONT-SIZE: 12px ;color:#A8A7A7; 
-}
-.new_F4 {
-	FONT-SIZE: 14px ;color:#404042; font-weight: bold;
-}
-
-/*修改编辑器的样式*/
-        #cke_txtComment {
-        width:650px;
+    <style type="text/css">
+        .samesortgoods_L17 {
+            LINE-HEIGHT: 230%;
         }
 
-        </style>
+        .samesortgoods_F3 {
+            FONT-SIZE: 12px;
+            color: #A8A7A7;
+        }
 
-        <link href="/css/index.css" rel="stylesheet" type="text/css">
+        A.samesortgoods_A1:link {
+            FONT-SIZE: 12px;
+            COLOR: #554F4F;
+            TEXT-DECORATION: none;
+        }
+
+        A.samesortgoods_A1:active {
+            FONT-SIZE: 12px;
+            COLOR: #554F4F;
+            TEXT-DECORATION: underline;
+        }
+
+        A.samesortgoods_A1:visited {
+            FONT-SIZE: 12px;
+            COLOR: #554F4F;
+            TEXT-DECORATION: none;
+        }
+
+        A.samesortgoods_A1:hover {
+            FONT-SIZE: 12px;
+            COLOR: #554F4F;
+            TEXT-DECORATION: underline;
+        }
+    </style>
+
+    <style type="text/css">
+        .samesortgoods_L17 {
+            LINE-HEIGHT: 230%;
+        }
+
+        .samesortgoods_F3 {
+            FONT-SIZE: 12px;
+            color: #A8A7A7;
+        }
+
+        .new_F4 {
+            FONT-SIZE: 14px;
+            color: #404042;
+            font-weight: bold;
+        }
+
+        /*修改编辑器的样式*/
+        #cke_txtComment {
+            width: 650px;
+        }
+    </style>
+
+    <link href="/css/index.css" rel="stylesheet" type="text/css">
     <link href="/Template/css.css" rel="stylesheet" />
     <link href="/Template/css1.css" rel="stylesheet" />
     <link href="/Css/themes/ui-lightness/jquery.ui.all.css" rel="stylesheet" />
-                    <script src="/Scripts/jquery-1.8.2.js"></script>
+    <script src="/Scripts/jquery-1.8.2.js"></script>
     <script src="/Scripts/jquery-ui-1.8.2.custom.min.js"></script>
     <script src="/Scripts/ckeditor/ckeditor.js"></script>
-    <script  type="text/javascript">
+    <script type="text/javascript">
         $(function () {
             //家在评论内容
             loadComment();
@@ -70,7 +87,10 @@ A.samesortgoods_A1:hover {
             $('#locationLoginUrl').click(function(){
                 showLoginUrl();
             });
-
+            //添加购物车
+            $('#btnAddCart').click(function(){
+                addProdustCart();
+            });
         });
 
         //跳转登录页面
@@ -81,50 +101,61 @@ A.samesortgoods_A1:hover {
             location.href='/account/Login.aspx?returnurl='+url;
         }
 
-        //添加评论
-        function addComment(){
-            var oEditer=CKEDITOR.instances.txtComment;
-            var msg = oEditor.getData();
-            if (msg==''){
-                alert('评论内容不能为空!');
-                return;
-            }
+        //添加商品到购物车
+        function addProdustCart(){
             $.post('/ashx/CheckUserLogin.ashx',{},function(data){
-                var serverData=data.split(':');
-                if (serverData[0]!='OK'){
+                data=data.split(':');
+                if (data[0]!='OK') {
+                    $('#showUserLoginMsg').text(data[1]);
+                    showLoginUrl();
+                    $('#dialog-message').dialog({
+                        modal:true,
+                        buttons:{
+                            OK:function(){
+                                $(this).dialog('close');
+                            }
+                        }
+                    });
                     return;
                 }
 
-                $.post('/ashx/ProcessComment.ashx',{'msg':msg,'bookId':<%=Book.Id%>,'action':'add'},function(data)){
-                var serverData=data.split(':');
-                if (serverData[0]=='OK'){
-                    $("#commentList li").remove();
-                    //$("#txtComment").val("");
-                    oEditor.setData("");
-                    loadComment();
-                }else {
-                    alert(serverData[1]);
-                }
-}
-            });
-
-
-        }
-
-        //检查用户登录状态
-        function checkUserState(){
-            $.post('/ashx/CheckUserLogin.ashx',{},function(data){
-                var serverData=data.split(':');
-                if (serverData[0]=='OK'){
-                    $('#showUserName').val(serverData[1]);
-                }else {
-                    $('#showLoginInfo').css('display','block');
-                }
+                $.post('/ashx/ProcessCart.ashx',{'bookId':<%=Book.Id %>},function(data){
+                    if (data=='OK'){
+                        $('#showCartMsg').text('商品已添加到购物车!');
+                        $('#showDialogMessage').dialog({
+                            modal:true,
+                            buttons:{
+                                OK:function(){
+                                    $(this).dialog('close');
+                                }
+                            }
+                        });
+                    }else {
+                        alert('添加商品失败!');
+                    }
+                });
             });
         }
-        //家在评论内容
-        function loadComment() {
-            $.post('/ashx/ProcessComment.ashx', { 'bookId': <%=Book.Id %>, 'action': 'load' }, function (data) {
+
+
+       
+
+        
+
+            //检查用户登录状态
+            function checkUserState(){
+                $.post('/ashx/CheckUserLogin.ashx',{},function(data){
+                    var serverData=data.split(':');
+                    if (serverData[0]=='OK'){
+                        $('#showUserName').val(serverData[1]);
+                    }else {
+                        $('#showLoginInfo').css('display','block');
+                    }
+                });
+            }
+            //家在评论内容
+            function loadComment() {
+                $.post('/ashx/ProcessComment.ashx', { 'bookId': <%=Book.Id %>, 'action': 'load' }, function (data) {
                 var serverData = $.parseJSON(data);
                 for (var i = 0; i < serverData.length; i++) {
                     $('<li style="float:none;text-align:left;font-size:14px">' + serverData[i].CreateDateTime + ':' + serverData[i].Msg + '</li>').appendTo('#commentList');
@@ -160,16 +191,46 @@ A.samesortgoods_A1:hover {
 		]
 	});
         }
-    </script>
-    
 
-    
+        //添加评论
+        function addComment() {
+            var oEditer=CKEDITOR.instances.txtComment;
+            var msg = oEditor.getData();
+            if (msg=='') {
+                alert('评论内容不能为空!');
+                return;
+            }
+
+            $.post('/ashx/CheckUserLogin.ashx',{},function(data) {
+                var serverData=data.split(':');
+                if (serverData[0]!='OK') {
+                    showLoginUrl();
+                    return;
+                }
+
+                $.post('/ashx/ProcessComment.ashx',{ 'msg':msg,'bookId':<%=Book.Id%>,'action':'add' },function(data) {
+                var serverData=data.split(':');
+                    if (serverData[0]=='OK') {
+                        $("#commentList li").remove();
+                        //$("#txtComment").val("");
+                        oEditor.setData("");
+                        loadComment();
+                    } else {
+                        alert(serverData[1]);
+                    }
+                });
+            });
+        }
+    </script>
+
+
+
 
 
 </asp:Content>
 
 <asp:Content ID="content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-            <center>
+    <center>
 
 <div id="main_box">
     <table align="center" border="0" cellpadding="0" cellspacing="0" width="800">
@@ -184,11 +245,12 @@ A.samesortgoods_A1:hover {
      <!-- 装右侧内容的单元格 -->
 
                 <style type="text/css">
-
-.new_F4 {
-	FONT-SIZE: 14px ;color:#404042; font-weight: bold;
-}
-</style>
+                    .new_F4 {
+                        FONT-SIZE: 14px;
+                        color: #404042;
+                        font-weight: bold;
+                    }
+                </style>
                 <table bgcolor="#F3F3F5" border="0" cellpadding="5" cellspacing="0" height="41" width="100%">
                     <tr>
                         <td valign="middle" width="10">&nbsp;</td>
@@ -249,8 +311,8 @@ A.samesortgoods_A1:hover {
                                     <td height="43">
                                         <table border="0" cellpadding="0" cellspacing="0">
                                             <tr>
-                                                <td align="left" valign="middle"><a href="javascript:void(0)" name="buy_book">
-                                                    <img border="0" height="20" src="/Template/image/7.jpg" style="cursor:hand" width="69" /></a> &nbsp;</td>
+                                                <td align="left" valign="middle"><a href="javascript:void(0)" name="buy_book" id="btnAddCart">
+                                                    <img border="0" height="20" src="/Template/image/7.jpg" style="cursor:hand" width="69"  />加入购物车</a> &nbsp;</td>
                                             </tr>
                                         </table>
                                     </td>
@@ -344,21 +406,30 @@ A.samesortgoods_A1:hover {
                     </tr>
                 </table>
                 <style type="text/css">
+                    A.new_A8:link {
+                        FONT-SIZE: 12px;
+                        COLOR: #ffffff;
+                        TEXT-DECORATION: none;
+                    }
 
-A.new_A8:link {
-	FONT-SIZE: 12px; COLOR: #ffffff; TEXT-DECORATION: none
-}
-A.new_A8:active {
-	FONT-SIZE: 12px; COLOR: #ffffff; TEXT-DECORATION: underline
-}
-A.new_A8:visited {
-	FONT-SIZE: 12px; COLOR: #ffffff; TEXT-DECORATION: none
-}
-A.new_A8:hover {
-	FONT-SIZE: 12px; COLOR: #ffffff; TEXT-DECORATION: underline
-}
+                    A.new_A8:active {
+                        FONT-SIZE: 12px;
+                        COLOR: #ffffff;
+                        TEXT-DECORATION: underline;
+                    }
 
-</style>
+                    A.new_A8:visited {
+                        FONT-SIZE: 12px;
+                        COLOR: #ffffff;
+                        TEXT-DECORATION: none;
+                    }
+
+                    A.new_A8:hover {
+                        FONT-SIZE: 12px;
+                        COLOR: #ffffff;
+                        TEXT-DECORATION: underline;
+                    }
+                </style>
 
                 <a name="reviewsummary"></a>
                 <table border="0" cellpadding="0" cellspacing="0" height="144" width="100%">
@@ -420,7 +491,7 @@ A.new_A8:hover {
                                             </tr>
                                             <tr>
                                                 <td align="left" height="35">
-                                                    <img border="0" height="19" id="btnAddComment" src="/Template/image/12.gif" style="cursor:hand" width="64" /> </td>
+                                                    <img border="0" height="19" id="btnAddComment" src="/Template/image/12.gif" style="cursor:hand" width="64" alt="评论" /> </td>
                                             </tr>
                                         </table>
                                     </td>
@@ -479,12 +550,21 @@ A.new_A8:hover {
     </table>
             </div>
 </center>
-   <!-- 
+    <!-- 
   
 -->
- <div id="dialog-message" title="错误提示!!">
-	<span id="showUserLoginMsg" style="font-size:14px;color:red"></span>
-     <a href="javascript:void(0)" id="locationLogin">请登录</a>
-</div>
+    <div id="dialog-message" title="错误提示!!">
+        <span id="showUserLoginMsg" style="font-size: 14px; color: red"></span>
+        <a href="javascript:void(0)" id="locationLogin">请登录</a>
+    </div>
+    <div id="dialog-message" title="错误提示!!">
+        <span id="showUserLoginMsg" style="font-size: 14px; color: red"></span>
+        <a href="javascript:void(0)" id="locationLogin">请登录</a>
+    </div>
+    <div id="showDialogMessage">
+        <span id="showCartMsg"></span>
+        <a href="/Cart.aspx">去购物车结账</a><br />
+        <a href="/BookList.aspx">继续购物</a>
+    </div>
 </asp:Content>
 
