@@ -163,7 +163,9 @@
     <Content Include="ashx\ProcessComment.ashx" />
     <Content Include="ashx\CheckUserLogin.ashx" />
     <Content Include="ashx\ProcessCart.ashx" />
+    <Content Include="ashx\DeleteCart.ashx" />
     <None Include="packages.config" />
+    <Content Include="OrderConfinm.aspx" />
     <Content Include="Scripts\ckeditor\.htaccess" />
     <Content Include="Scripts\ckeditor\ckeditor.pack" />
     <Content Include="Scripts\ckeditor\ckeditor.php" />
@@ -1148,6 +1150,9 @@
     <Compile Include="ashx\CheckValidateCode.ashx.cs">
       <DependentUpon>CheckValidateCode.ashx</DependentUpon>
     </Compile>
+    <Compile Include="ashx\DeleteCart.ashx.cs">
+      <DependentUpon>DeleteCart.ashx</DependentUpon>
+    </Compile>
     <Compile Include="ashx\FindUserPassword.ashx.cs">
       <DependentUpon>FindUserPassword.ashx</DependentUpon>
     </Compile>
@@ -1237,6 +1242,13 @@
     </Compile>
     <Compile Include="MasterPage.master.designer.cs">
       <DependentUpon>MasterPage.master</DependentUpon>
+    </Compile>
+    <Compile Include="OrderConfinm.aspx.cs">
+      <DependentUpon>OrderConfinm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OrderConfinm.aspx.designer.cs">
+      <DependentUpon>OrderConfinm.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserInfoManager\UserCenter.aspx.cs">
