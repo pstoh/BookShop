@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BookSpiders SelectIndex="0">
+  <BookSpider SpiderName="新阅搜书之百度" Url="http://www.baidu.com" BookTypeURL="" BookTypeXPath="" BookXPath="" ChapterXPath="" />
+  <BookSpider SpiderName="天下书库" Url="http://book.txshuku.net" BookTypeURL="" BookTypeXPath="" BookXPath="" ChapterXPath="" />
+  <BookSpider SpiderName="努努书坊" Url="http://www.kanunu8.com" BookTypeURL="" BookTypeXPath="" BookXPath="" ChapterXPath="" />
+  <BookSpider SpiderName="全本小说网" Url="https://www.ybdu.com" BookTypeURL="" BookTypeXPath="" BookXPath="" ChapterXPath="" />
+  <BookSpider SpiderName="悠读文学网" Url="http://www.yooread.com" BookTypeURL="" BookTypeXPath="" BookXPath="" ChapterXPath="" />
+  <BookSpider SpiderName="天涯书库" Url="http://www.tianyashuku.com" BookTypeURL="" BookTypeXPath="" BookXPath="" ChapterXPath="" />
+  <BookSpider SpiderName="五二书库" Url="https://www.52shuku.com" BookTypeURL="" BookTypeXPath="" BookXPath="" ChapterXPath="" />
+  <BookSpider SpiderName="八零电子书" Url="http://www.80txt.com" BookTypeURL="" BookTypeXPath="" BookXPath="" ChapterXPath="" />
+  <BookSpider SpiderName="小说天堂" Url="http://www.xiaoshuotxt.org" BookTypeURL="" BookTypeXPath="" BookXPath="" ChapterXPath="" />
+  <BookSpider SpiderName="顶点小说" Url="http://www.x23us.com" BookTypeURL="" BookTypeXPath="" BookXPath="" ChapterXPath="" />
+  <BookSpider SpiderName="笔趣阁" Url="http://www.qu.la" BookTypeURL="" BookTypeXPath="" BookXPath="" ChapterXPath="" />
+  <BookSpider SpiderName="啃星书库" Url="http://www.kenxing.org" BookTypeURL="" BookTypeXPath="" BookXPath="" ChapterXPath="" />
+  <BookSpider SpiderName="梦远书城" Url="http://www.my285.com" BookTypeURL="" BookTypeXPath="" BookXPath="" ChapterXPath="" />
+  <BookSpider SpiderName="136书屋" Url="http://www.136book.com" BookTypeURL="" BookTypeXPath="" BookXPath="" ChapterXPath="" />
+  <BookSpider SpiderName="69中文网" Url="http://www.69zw.com" BookTypeURL="" BookTypeXPath="" BookXPath="" ChapterXPath="" />
+  <BookSpider SpiderName="无图" Url="http://www.wutuxs.com" BookTypeURL="" BookTypeXPath="" BookXPath="" ChapterXPath="" />
+  <BookSpider SpiderName="5200小说网" Url="http://www.5200xs.org" BookTypeURL="" BookTypeXPath="" BookXPath="" ChapterXPath="" />
+  <BookSpider SpiderName="黑岩阁" Url="http://www.heiyuege.com" BookTypeURL="" BookTypeXPath="" BookXPath="" ChapterXPath="" />
+  <BookSpider SpiderName="趣读屋" Url="http://www.qvduwu.com" BookTypeURL="" BookTypeXPath="" BookXPath="" ChapterXPath="" />
+  <BookSpider SpiderName="天天小说网" Url="http://www.360118.com" BookTypeURL="" BookTypeXPath="" BookXPath="" ChapterXPath="" />
+  <BookSpider SpiderName="雅尔文" Url="https://www.yaerwen.org" BookTypeURL="" BookTypeXPath="" BookXPath="" ChapterXPath="" />
+  <BookSpider SpiderName="燃文小说" Url="https://www.ranwena.com" BookTypeURL="" BookTypeXPath="" BookXPath="" ChapterXPath="" />
+  <BookSpider SpiderName="秋语阁" Url="http://www.qiuyuge.org" BookTypeURL="" BookTypeXPath="" BookXPath="" ChapterXPath="" />
+  <BookSpider SpiderName="思路客" Url="http://www.siluke.org" BookTypeURL="" BookTypeXPath="" BookXPath="" ChapterXPath="" />
+  <BookSpider SpiderName="书书网" Url="http://www.shushu8.com" BookTypeURL="" BookTypeXPath="" BookXPath="" ChapterXPath="" />
+  <BookSpider SpiderName="鬼大爷名著阅读" Url="http://book.guidaye.com" BookTypeURL="" BookTypeXPath="" BookXPath="" ChapterXPath="" />
+  <BookSpider SpiderName="品书网" Url="https://www.vodtw.com" BookTypeURL="" BookTypeXPath="" BookXPath="" ChapterXPath="" />
+  <BookSpider SpiderName="看书啦2" Url="http://www.kanshula.org" BookTypeURL="" BookTypeXPath="" BookXPath="" ChapterXPath="" />
+  <BookSpider SpiderName="无忧书城手机版" Url="http://m.51shucheng.net/" BookTypeURL="http://m.51shucheng.net/fenlei" BookTypeXPath=".//ul[@class= &quot;cat_list&quot;]/li/a" BookXPath=".//div[@class=&quot;book_list&quot;]/li/a" ChapterXPath="" />
+  <BookSpider SpiderName="爱尚小说网" Url="http://www.23xs.cc" BookTypeURL="http://www.23xs.cc" BookTypeXPath=".//div[@class=&quot;main m_menu&quot;]/ul/li/a" BookXPath=".//ul[@class=&quot;ultop&quot;]/li/a" ChapterXPath="" />
+  <BookSpider SpiderName="乐文小说" Url="https://www.lewenxiaoshuo.com" BookTypeURL="https://www.lewenxiaoshuo.com" BookTypeXPath=".//div[@class=&quot;nav&quot;]/ul/li/a" BookXPath=".//span[@class=&quot;s2&quot;]/a" ChapterXPath="" />
+</BookSpiders>
